@@ -27,7 +27,7 @@ import type { Field } from '@prisma/client';
 import { FieldType, RecipientRole } from '@prisma/client';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { match, P } from 'ts-pattern';
 
 import { DocumentSigningAttachmentsPopover } from '~/components/general/document-signing/document-signing-attachments-popover';
@@ -50,6 +50,12 @@ import { useRequiredDocumentSigningAuthContext } from './document-signing-auth-p
 import { DocumentSigningCompleteDialog } from './document-signing-complete-dialog';
 import { DocumentSigningRecipientProvider } from './document-signing-recipient-provider';
 
+type DocumentSigningBranding = {
+  brandingEnabled: boolean;
+  brandingLogo: string;
+  brandingUrl: string;
+};
+
 export type DocumentSigningPageViewV1Props = {
   recipient: RecipientWithFields;
   document: DocumentAndSender;
@@ -57,6 +63,7 @@ export type DocumentSigningPageViewV1Props = {
   completedFields: CompletedField[];
   isRecipientsTurn: boolean;
   allRecipients?: RecipientWithFields[];
+  branding: DocumentSigningBranding;
   includeSenderDetails: boolean;
 };
 
@@ -68,6 +75,7 @@ export const DocumentSigningPageViewV1 = ({
   isRecipientsTurn,
   allRecipients = [],
   includeSenderDetails,
+  branding,
 }: DocumentSigningPageViewV1Props) => {
   const { documentData, documentMeta } = document;
 
@@ -168,16 +176,31 @@ export const DocumentSigningPageViewV1 = ({
   const pendingFields = fieldsRequiringValidation.filter((field) => !field.inserted);
   const hasPendingFields = pendingFields.length > 0;
 
+  const hasCustomBrandingLogo = branding.brandingEnabled && Boolean(branding.brandingLogo);
+
+  const parsedBrandingUrl = hasCustomBrandingLogo ? URL.parse(branding.brandingUrl) : null;
+  const safeBrandingUrl =
+    parsedBrandingUrl?.protocol === 'http:' || parsedBrandingUrl?.protocol === 'https:' ? parsedBrandingUrl.href : null;
+
+  const customBrandingLogo = (
+    <img
+      src={`/api/branding/logo/team/${document.teamId}`}
+      alt={`${document.team.name}'s Logo`}
+      className="mb-4 h-12 w-12 md:mb-2"
+    />
+  );
+
   return (
     <DocumentSigningRecipientProvider recipient={recipient} targetSigner={targetSigner}>
       <div className="mx-auto w-full max-w-screen-xl sm:px-6">
-        {document.team.teamGlobalSettings.brandingEnabled && document.team.teamGlobalSettings.brandingLogo && (
-          <img
-            src={`/api/branding/logo/team/${document.teamId}`}
-            alt={`${document.team.name}'s Logo`}
-            className="mb-4 h-12 w-12 md:mb-2"
-          />
-        )}
+        {hasCustomBrandingLogo &&
+          (safeBrandingUrl ? (
+            <a href={safeBrandingUrl} target="_blank" rel="noopener noreferrer">
+              {customBrandingLogo}
+            </a>
+          ) : (
+            <Link to="/">{customBrandingLogo}</Link>
+          ))}
         <h1
           className="block max-w-[20rem] truncate font-semibold text-2xl sm:mt-4 md:max-w-[30rem] md:text-3xl"
           title={document.title}
