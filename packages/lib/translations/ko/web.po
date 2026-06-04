@@ -8,7 +8,7 @@ msgstr ""
 "Language: ko\n"
 "Project-Id-Version: documenso-app\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-03 06:16\n"
+"PO-Revision-Date: 2026-06-04 07:37\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -9546,13 +9546,17 @@ msgstr "문서, 이메일 및 API 사용량에 대한 일일 평균 표시"
 msgid "Show license key"
 msgstr "라이선스 키 표시하기"
 
-#: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
-msgid "Show quotas for documents, emails and API usages"
-msgstr "문서, 이메일 및 API 사용량에 대한 할당량 표시"
-
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.public-profile.tsx
 msgid "Show templates in your public profile for your audience to sign and get started quickly"
 msgstr "공개 프로필에 템플릿을 표시해, 사용자가 빠르게 서명하고 시작할 수 있도록 하세요"
+
+#: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
+msgid "Show usage"
+msgstr "사용량 표시하기"
+
+#: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
+msgid "Show usage with quotas"
+msgstr "할당량과 함께 사용량 표시하기"
 
 #: apps/remix/app/components/dialogs/sign-field-signature-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx

@@ -8,7 +8,7 @@ msgstr ""
 "Language: de\n"
 "Project-Id-Version: documenso-app\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-03 06:16\n"
+"PO-Revision-Date: 2026-06-04 07:37\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -9546,13 +9546,17 @@ msgstr "Tägliche Durchschnittswerte für Dokumente, E-Mails und API-Nutzung anz
 msgid "Show license key"
 msgstr "Lizenzschlüssel anzeigen"
 
-#: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
-msgid "Show quotas for documents, emails and API usages"
-msgstr "Kontingente für Dokumente, E-Mails und API-Nutzung anzeigen"
-
 #: apps/remix/app/routes/_authenticated+/t.$teamUrl+/settings.public-profile.tsx
 msgid "Show templates in your public profile for your audience to sign and get started quickly"
 msgstr "Vorlagen in Ihrem öffentlichen Profil anzeigen, damit Ihre Zielgruppe unterschreiben und schnell loslegen kann"
+
+#: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
+msgid "Show usage"
+msgstr "Nutzung anzeigen"
+
+#: apps/remix/app/routes/_authenticated+/admin+/organisation-stats._index.tsx
+msgid "Show usage with quotas"
+msgstr "Nutzung mit Kontingenten anzeigen"
 
 #: apps/remix/app/components/dialogs/sign-field-signature-dialog.tsx
 #: apps/remix/app/components/general/document-signing/document-signing-auth-2fa.tsx
