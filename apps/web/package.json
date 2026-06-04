@@ -19,7 +19,7 @@
     "@documenso/tailwind-config": "*",
     "@documenso/trpc": "*",
     "@documenso/ui": "*",
-    "@hookform/resolvers": "^3.1.0",
+    "@hookform/resolvers": "^5.4.0",
     "@tanstack/react-query": "^4.29.5",
     "formidable": "^2.1.1",
     "framer-motion": "^10.12.8",
